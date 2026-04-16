@@ -39,13 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# AI assistance
-CLAUDE.md
-AGENTS.md
-.claude/
-.gemini/
-.agents/
-.agent/
-_agents/
-_agent/
