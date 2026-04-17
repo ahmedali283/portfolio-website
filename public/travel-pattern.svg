@@ -1,0 +1,26 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Airplane icons -->
+  <g opacity="0.03" fill="#ffffff">
+    <path d="M100,50 L110,45 L115,50 L110,55 Z M110,45 L115,40 L120,45 L115,50 Z" transform="rotate(45 110 50)"/>
+    <path d="M400,150 L410,145 L415,150 L410,155 Z M410,145 L415,140 L420,145 L415,150 Z" transform="rotate(-30 410 150)"/>
+    <path d="M800,300 L810,295 L815,300 L810,305 Z M810,295 L815,290 L820,295 L815,300 Z" transform="rotate(60 810 300)"/>
+    <path d="M200,500 L210,495 L215,500 L210,505 Z M210,495 L215,490 L220,495 L215,500 Z" transform="rotate(-45 210 500)"/>
+    <path d="M1000,200 L1010,195 L1015,200 L1010,205 Z M1010,195 L1015,190 L1020,195 L1015,200 Z" transform="rotate(20 1010 200)"/>
+  </g>
+
+  <!-- Globe/Location pin icons -->
+  <g opacity="0.04" fill="#ffffff">
+    <circle cx="300" cy="100" r="15"/>
+    <circle cx="600" cy="400" r="12"/>
+    <circle cx="900" cy="600" r="18"/>
+    <circle cx="150" cy="300" r="10"/>
+    <circle cx="1100" cy="450" r="14"/>
+  </g>
+
+  <!-- Dotted travel paths -->
+  <g opacity="0.02" stroke="#ffffff" stroke-width="2" stroke-dasharray="5,5" fill="none">
+    <path d="M100,100 Q300,200 500,150 T900,300"/>
+    <path d="M200,600 Q400,500 600,550 T1000,400"/>
+    <path d="M50,400 Q250,300 450,350 T850,500"/>
+  </g>
+</svg>
