@@ -70,7 +70,7 @@ export default function FinalCTA() {
             <div className="flex flex-col gap-4 items-center">
               <a
                 href="/book"
-                className="inline-block bg-gradient-to-r from-gold-dark via-gold-light to-gold-dark text-background font-bold px-32 py-7 rounded-xl text-2xl md:text-3xl transition-all duration-300 hover:scale-110 hover:shadow-[0_0_50px_rgba(255,215,0,0.7)] outline outline-2 outline-gold-light/30 outline-offset-4"
+                className="inline-block w-full md:w-auto bg-gradient-to-r from-gold-dark via-gold-light to-gold-dark text-background font-bold px-8 md:px-32 py-5 md:py-7 rounded-xl text-xl md:text-3xl transition-all duration-300 hover:scale-[1.02] md:hover:scale-110 hover:shadow-[0_0_50px_rgba(255,215,0,0.7)] outline outline-2 outline-gold-light/30 outline-offset-4"
               >
                 Book Free Audit Call →
               </a>

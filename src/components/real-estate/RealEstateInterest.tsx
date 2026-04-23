@@ -1,80 +1,75 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 const transformations = [
   {
-    title: 'Zero-Touch Listing Distribution',
     icon: '🚀',
-    description: 'Your listings sync automatically to MLS, Zillow, Realtor.com, Trulia, Facebook, and your website—all from one place. Update the price once, it changes everywhere. Add photos once, they appear on every platform.',
-    emphasis: "Meanwhile, agents still copying and pasting to 8 different sites are working weekends while you're closing deals."
+    title: 'Zero-Touch Listing Distribution',
+    description: "Your listings sync automatically to MLS, Zillow, Realtor.com, Trulia, Facebook, and your website—all from one place. Update the price once, it changes everywhere. Add photos once, they appear on every platform. Meanwhile, agents still copying and pasting to 8 different sites are working weekends while you're closing deals.",
   },
   {
-    title: 'Instant Lead Response',
     icon: '⚡',
-    description: 'Hot leads from Zillow hit your system, get auto-qualified based on your criteria, route to the right agent in 60 seconds, and receive instant response with property details and showing availability.',
-    emphasis: "Your competitors using shared inbox and manual follow-up? Those leads sit for 4-6 hours. By then, the buyer already booked three showings with faster agencies."
+    title: 'Instant Lead Response',
+    description: "Hot leads from Zillow hit your system, get auto-qualified based on your criteria, route to the right agent in 60 seconds, and receive instant response with property details and showing availability. Your competitors using shared inbox and manual follow-up? Those leads sit for 4-6 hours. By then, the buyer already booked three showings with faster agencies.",
   },
   {
-    title: 'Self-Service Showing Scheduler',
     icon: '📅',
-    description: 'Buyers see a property online, click "Schedule Showing," pick a time that works, get auto-confirmation, and receive reminders. Your agent just shows up. No phone tag, no double-bookings.',
-    emphasis: "Showings book themselves while you sleep, while competitors lose buyers to friction."
+    title: 'Self-Service Showing Scheduler',
+    description: "Buyers see a property online, click \"Schedule Showing,\" pick a time that works, get auto-confirmation, and receive reminders. Your agent just shows up. No phone tag, no double-bookings, no \"let me check my calendar and call you back.\" Showings book themselves while you sleep, while competitors lose buyers to friction.",
   }
 ]
 
 export default function RealEstateInterest() {
-  return (
-    <section className="py-24 md:py-32 bg-[#0f172a] relative overflow-hidden">
-      <div className="container-custom relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-20">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
-          >
-            What Changes When Listings Update Themselves and Leads Route Automatically
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-400"
-          >
-            Here's what happens when you stop manually updating platforms and let technology handle the repetitive work:
-          </motion.p>
-        </div>
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {transformations.map((item, index) => (
+  return (
+    <section className="py-24 bg-[#0b1120] relative" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-4xl mx-auto mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-white">
+            What Changes When Listings Update Themselves and <span className="text-blue-400">Leads Route Automatically</span>
+          </h2>
+          <p className="text-xl text-slate-400 leading-relaxed">
+            Here's what happens when you stop manually updating platforms and let technology handle the repetitive work:
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          {transformations.map((item, idx) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="group p-8 rounded-3xl bg-slate-800/20 border border-white/5 hover:border-blue-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/5"
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
+              className="bg-slate-800/40 border border-slate-700/50 p-8 rounded-2xl hover:bg-slate-800/60 transition-colors duration-300 relative overflow-hidden group"
             >
-              <div className="text-5xl mb-6">{item.icon}</div>
-              <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-400 transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full group-hover:bg-blue-500/20 transition-all duration-500" />
+              <div className="text-4xl mb-6">{item.icon}</div>
+              <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+              <p className="text-slate-400 leading-relaxed">
                 {item.description}
-              </p>
-              <p className="text-sm font-medium text-blue-500/80 italic leading-relaxed">
-                {item.emphasis}
               </p>
             </motion.div>
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="mt-20 p-10 rounded-3xl bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border border-blue-500/20 text-center max-w-5xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="bg-gradient-to-r from-blue-900/30 via-indigo-900/30 to-blue-900/30 border border-blue-500/20 rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto backdrop-blur-sm"
         >
-          <p className="text-xl md:text-2xl font-semibold text-gray-200">
-            This isn't about getting a nicer website. This is about transforming your agency into a modern real estate platform that captures every opportunity <span className="text-blue-400 underline decoration-blue-500/30 underline-offset-8">while competitors drown in manual busywork.</span>
+          <p className="text-xl md:text-2xl text-blue-100 font-medium leading-relaxed">
+            This isn't about getting a nicer website. This is about transforming your agency into a modern real estate platform that captures every opportunity while competitors drown in manual busywork.
           </p>
         </motion.div>
       </div>
