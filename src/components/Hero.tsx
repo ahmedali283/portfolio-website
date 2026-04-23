@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import oldSiteImg from '@/assets/old site.png'
+import newSiteImg from '@/assets/new site.png'
 
 export default function Hero() {
   return (
@@ -28,7 +30,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container-custom relative z-10 py-32">
+      <div className="container-custom relative z-10 pt-[118px] pb-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,20 +75,34 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-col md:flex-row gap-8 justify-center items-center max-w-3xl mx-auto py-12"
+            className="flex flex-col md:flex-row gap-8 justify-center items-stretch max-w-5xl mx-auto py-12"
           >
-            <div className="flex-1 p-8 bg-divider/50 rounded-lg border border-red-500/30">
-              <p className="text-red-400 font-semibold mb-2">BEFORE</p>
-              <p className="text-secondary text-sm mb-1">Manual quotes</p>
-              <p className="text-4xl font-bold">12%</p>
-              <p className="text-secondary text-sm">conversion</p>
+            <div className="flex-1 flex flex-col p-6 bg-divider/50 rounded-lg border border-red-500/30">
+              <div className="relative w-full h-48 mb-6 rounded-md overflow-hidden border border-divider">
+                <Image src={oldSiteImg} alt="Old site" fill className="object-cover object-top" />
+              </div>
+              <div className="flex items-center justify-between w-full mt-2 px-2">
+                <p className="text-red-400 font-extrabold text-3xl md:text-4xl tracking-wide">BEFORE</p>
+                <div className="text-right">
+                  <p className="text-secondary text-sm mb-1">Manual quotes</p>
+                  <p className="text-4xl font-bold leading-none mb-1">12%</p>
+                  <p className="text-secondary text-sm">conversion</p>
+                </div>
+              </div>
             </div>
-            <div className="text-accent text-4xl font-bold hidden md:block">→</div>
-            <div className="flex-1 p-8 bg-gradient-to-br from-accent/20 to-accent-teal/20 rounded-lg border border-accent/50">
-              <p className="text-accent font-semibold mb-2">AFTER</p>
-              <p className="text-gray-300 text-sm mb-1">Live pricing</p>
-              <p className="text-4xl font-bold">38%</p>
-              <p className="text-gray-300 text-sm">conversion</p>
+            <div className="flex items-center justify-center text-accent text-4xl font-bold hidden md:flex">→</div>
+            <div className="flex-1 flex flex-col p-6 bg-gradient-to-br from-accent/20 to-accent-teal/20 rounded-lg border border-accent/50">
+              <div className="relative w-full h-48 mb-6 rounded-md overflow-hidden border border-accent/30 shadow-[0_0_15px_rgba(45,212,191,0.2)]">
+                <Image src={newSiteImg} alt="New site" fill className="object-cover object-top" />
+              </div>
+              <div className="flex items-center justify-between w-full mt-2 px-2">
+                <p className="text-accent font-extrabold text-3xl md:text-4xl tracking-wide">AFTER</p>
+                <div className="text-right">
+                  <p className="text-gray-300 text-sm mb-1">Live pricing</p>
+                  <p className="text-4xl font-bold leading-none mb-1">38%</p>
+                  <p className="text-gray-300 text-sm">conversion</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 

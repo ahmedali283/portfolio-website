@@ -97,32 +97,6 @@ export default function FinalCTA() {
             </div>
           </motion.div>
 
-          {/* Additional Trust Elements */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="pt-12"
-          >
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-secondary">
-              <div className="flex items-center gap-2">
-                <span className="text-success">✓</span>
-                <span>Zero obligation</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-success">✓</span>
-                <span>48-hour delivery</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-success">✓</span>
-                <span>Actionable insights</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-success">✓</span>
-                <span>Watch on your time</span>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
 
