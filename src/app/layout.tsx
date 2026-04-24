@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     title: 'Transform Your Travel Agency Into a 24/7 Booking Machine',
     description: 'Convert 3x more website visitors into bookings with automated travel booking systems.',
   },
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
