@@ -10,6 +10,9 @@ export default function Footer() {
             <a href="/book" className="bg-gradient-to-r from-accent to-accent-teal text-background font-bold py-2 px-6 rounded-md hover:opacity-90 transition-opacity">
               Book Free Audit Call
             </a>
+            <a href="/portfolio" className="hover:text-accent transition-colors">
+              Portfolio
+            </a>
             <a href="/privacy" className="hover:text-accent transition-colors">
               Privacy Policy
             </a>
