@@ -68,7 +68,7 @@ export const projects: Project[] = [
       'Flutter mobile app connecting patients with doctors for both online consultations and in-person appointments. Features specialty-based doctor discovery (Dentist, Cardiology, Orthopedics, Neurology), real-time slot booking, integrated payment processing, and a live chat system — giving patients a complete healthcare experience from their phone.',
     metrics: [
       { value: '2-in-1', label: 'Online & In-Person' },
-      { value: '29+', label: 'Specialties Covered' },
+      { value: '30+', label: 'Specialties Covered' },
       { value: 'Live', label: 'Payment Processing' },
     ],
     tags: ['Flutter', 'Firebase', 'Telemedicine', 'Appointment Booking', 'Payments'],
