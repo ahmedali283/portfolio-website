@@ -1,6 +1,8 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import type { Project } from '@/data/portfolio'
 
 const CATEGORY_BADGE: Record<string, string> = {
@@ -23,13 +25,28 @@ function gridColsClass(count: number) {
 
 /* ─── Project visual thumbnail ───────────────────────────── */
 function ProjectVisual({ project, tall = false }: { project: Project; tall?: boolean }) {
+  const hasImages = Array.isArray(project.images) && project.images.length > 0
+  const isMulti = hasImages && project.images!.length > 1
+
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const advance = useCallback(() => {
+    setActiveIndex(prev => (prev + 1) % project.images!.length)
+  }, [project.images])
+
+  useEffect(() => {
+    if (!isMulti) return
+    const id = setInterval(advance, 3500)
+    return () => clearInterval(id)
+  }, [isMulti, advance])
+
+  const heightClass = tall
+    ? 'min-h-[200px] sm:min-h-[260px] md:min-h-[340px]'
+    : 'min-h-[180px] sm:min-h-[210px]'
+
   return (
     <div
-      className={`relative overflow-hidden flex-shrink-0 ${
-        tall
-          ? 'min-h-[200px] sm:min-h-[260px] md:min-h-[340px]'
-          : 'min-h-[180px] sm:min-h-[210px]'
-      }`}
+      className={`relative overflow-hidden flex-shrink-0 ${heightClass}`}
       style={{
         background: `linear-gradient(135deg, ${project.accentFrom}18 0%, ${project.accentTo}28 100%)`,
       }}
@@ -54,21 +71,65 @@ function ProjectVisual({ project, tall = false }: { project: Project; tall?: boo
         }}
       />
 
+      {hasImages ? (
+        <>
+          <AnimatePresence mode="sync">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, ease: 'easeInOut' }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={project.images![activeIndex]}
+                alt={`${project.title} screenshot ${activeIndex + 1}`}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={activeIndex === 0}
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Bottom vignette keeps dots readable over images */}
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+        </>
+      ) : (
+        <div
+          className="absolute inset-0 flex items-center justify-center text-7xl select-none"
+          style={{ filter: 'drop-shadow(0 0 24px rgba(255,255,255,0.08))' }}
+        >
+          {project.icon}
+        </div>
+      )}
+
       {/* Project number */}
       <span
-        className="absolute top-4 left-4 font-mono text-xs font-black tracking-widest opacity-25"
+        className="absolute top-4 left-4 font-mono text-xs font-black tracking-widest opacity-25 z-10"
         style={{ color: project.accentFrom }}
       >
         {project.projectNumber}
       </span>
 
-      {/* Icon */}
-      <div
-        className="absolute inset-0 flex items-center justify-center text-7xl select-none"
-        style={{ filter: 'drop-shadow(0 0 24px rgba(255,255,255,0.08))' }}
-      >
-        {project.icon}
-      </div>
+      {/* Dot navigation — only for multi-image carousels */}
+      {isMulti && (
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          {project.images!.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              aria-label={`View screenshot ${i + 1}`}
+              className={`rounded-full transition-all duration-300 ${
+                i === activeIndex
+                  ? 'w-4 h-1.5 bg-white'
+                  : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/70'
+              }`}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Bottom accent line */}
       <div

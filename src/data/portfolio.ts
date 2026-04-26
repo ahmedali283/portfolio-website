@@ -18,26 +18,28 @@ export interface Project {
   accentTo: string
   icon: string
   projectNumber: string
+  images?: string[]
 }
 
 export const projects: Project[] = [
   {
     id: 'awt',
     category: 'travel',
-    title: 'Adventure World Tours',
+    title: 'Air World Tours',
     tagline: 'Live Booking Engine',
     description:
-      'End-to-end automated booking platform integrating live inventory from TBO, Amadeus, and Sabre — replacing 100% manual quote workflows. Built a real-time pricing engine with instant confirmation for 400+ daily transactions.',
+      'End-to-end automated booking platform with live inventory from TBO, Amadeus, and Sabre — eliminating 100% of manual quote workflows. Enabled a specialty tour operator to run 24/7 with real-time pricing, instant confirmations, and zero API certification headaches. The agency owner said it best: "They completely transformed our business."',
     metrics: [
       { value: '3.2x', label: 'Conversion Lift' },
-      { value: '38%', label: 'Booking Rate' },
+      { value: '35%', label: 'Revenue Increase' },
       { value: '25h+', label: 'Saved Weekly' },
     ],
-    tags: ['Amadeus API', 'TBO', 'Next.js', 'Real-time Pricing'],
+    tags: ['Amadeus API', 'TBO', 'Sabre', 'Next.js', 'Real-time Pricing'],
     accentFrom: '#f97316',
     accentTo: '#fb923c',
     icon: '✈️',
     projectNumber: '01',
+    images: ['/assets/awt/dashboard.png'],
   },
   {
     id: 'global-escapes',
@@ -58,22 +60,26 @@ export const projects: Project[] = [
     projectNumber: '02',
   },
   {
-    id: 'clearview-dental',
+    id: 'doctomorris',
     category: 'medical',
-    title: 'ClearView Dental Group',
-    tagline: 'Patient Acquisition System',
+    title: 'DoctorMorris',
+    tagline: 'Doctor Booking & Telemedicine App',
     description:
-      'HIPAA-compliant patient acquisition and scheduling automation for a 4-location dental group. Reduced no-shows by 65% through automated reminders and rebuilt the digital intake process from scratch.',
+      'Flutter mobile app connecting patients with doctors for both online consultations and in-person appointments. Features specialty-based doctor discovery (Dentist, Cardiology, Orthopedics, Neurology), real-time slot booking, integrated payment processing, and a live chat system — giving patients a complete healthcare experience from their phone.',
     metrics: [
-      { value: '2.8x', label: 'Lead Conversion' },
-      { value: '65%', label: 'Fewer No-Shows' },
-      { value: '$180K', label: 'Annual Savings' },
+      { value: '2-in-1', label: 'Online & In-Person' },
+      { value: '4+', label: 'Specialties Covered' },
+      { value: 'Live', label: 'Payment Processing' },
     ],
-    tags: ['HIPAA Compliant', 'Scheduling API', 'Patient Portal', 'SEO'],
+    tags: ['Flutter', 'Firebase', 'Telemedicine', 'Appointment Booking', 'Payments'],
     accentFrom: '#3b82f6',
-    accentTo: '#6366f1',
-    icon: '🦷',
+    accentTo: '#2563eb',
+    icon: '🩺',
     projectNumber: '03',
+    images: [
+      '/assets/doctormorris/home-screen.jpg',
+      '/assets/doctormorris/payment-success.jpg',
+    ],
   },
   {
     id: 'prohealth',
