@@ -286,7 +286,7 @@ function FeaturedCard({ project, delay }: { project: Project; delay: number }) {
     >
       {/* Gradient glow border */}
       <div
-        className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none"
+        className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 blur-sm pointer-events-none"
         style={{ background: `linear-gradient(135deg, ${project.accentFrom}, ${project.accentTo})` }}
       />
 
@@ -379,7 +379,7 @@ function ProjectCard({ project, index, baseDelay }: { project: Project; index: n
     >
       {/* Glow border */}
       <div
-        className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none"
+        className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 blur-sm pointer-events-none"
         style={{ background: `linear-gradient(135deg, ${project.accentFrom}, ${project.accentTo})` }}
       />
 
