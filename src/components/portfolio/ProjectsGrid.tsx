@@ -10,18 +10,19 @@ const CATEGORY_BADGE: Record<string, string> = {
   travel: 'text-orange-400 bg-orange-400/10 border-orange-400/30',
   medical: 'text-blue-400 bg-blue-400/10 border-blue-400/30',
   'real-estate': 'text-teal-400 bg-teal-400/10 border-teal-400/30',
+  gaming: 'text-pink-400 bg-pink-400/10 border-pink-400/30',
 }
 
 const CATEGORY_LABEL: Record<string, string> = {
   travel: 'Travel',
   medical: 'Medical',
   'real-estate': 'Real Estate',
+  gaming: 'Gaming',
 }
 
 function gridColsClass(count: number) {
   if (count === 1) return 'grid-cols-1 max-w-sm mx-auto'
-  if (count === 2) return 'grid-cols-1 md:grid-cols-2'
-  return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+  return 'grid-cols-1 md:grid-cols-2'
 }
 
 /* ─── Project visual thumbnail ───────────────────────────── */
@@ -88,7 +89,7 @@ function ProjectVisual({ project, tall = false }: { project: Project; tall?: boo
                 alt={`${project.title} screenshot ${activeIndex + 1}`}
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 priority={activeIndex === 0}
               />
             </motion.div>

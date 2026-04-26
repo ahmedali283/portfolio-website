@@ -9,6 +9,7 @@ const CATEGORIES: { id: FilterCategory; label: string; mobileLabel: string }[] =
   { id: 'travel', label: 'Travel', mobileLabel: 'Travel' },
   { id: 'medical', label: 'Medical', mobileLabel: 'Medical' },
   { id: 'real-estate', label: 'Real Estate', mobileLabel: 'Estate' },
+  { id: 'gaming', label: 'Gaming', mobileLabel: 'Gaming' },
 ]
 
 interface Props {

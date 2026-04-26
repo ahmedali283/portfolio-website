@@ -1,4 +1,4 @@
-export type ProjectCategory = 'travel' | 'medical' | 'real-estate'
+export type ProjectCategory = 'travel' | 'medical' | 'real-estate' | 'gaming'
 export type FilterCategory = 'all' | ProjectCategory
 
 export interface ProjectMetric {
@@ -41,6 +41,7 @@ export const projects: Project[] = [
     projectNumber: '01',
     images: ['/assets/awt/dashboard.png'],
   },
+  /*
   {
     id: 'global-escapes',
     category: 'travel',
@@ -59,6 +60,7 @@ export const projects: Project[] = [
     icon: '🌍',
     projectNumber: '02',
   },
+  */
   {
     id: 'doctomorris',
     category: 'medical',
@@ -80,6 +82,7 @@ export const projects: Project[] = [
       '/assets/doctormorris/dmoriss.png',
     ],
   },
+  /*
   {
     id: 'prohealth',
     category: 'medical',
@@ -134,6 +137,25 @@ export const projects: Project[] = [
     icon: '🏢',
     projectNumber: '06',
   },
+  */
+  {
+    id: 'cards-and-chaos',
+    category: 'gaming',
+    title: 'Cards & Chaos - Frontend',
+    tagline: 'Multiplayer Party Game',
+    description: 'Modern, responsive frontend for the Cards & Chaos multiplayer party game. Features real-time game state synchronization via WebSockets, optional WebRTC video calls, and a dark/light theme supporting card UI.',
+    metrics: [
+      { value: 'Live', label: 'WebSockets' },
+      { value: 'WebRTC', label: 'Video Calls' },
+      { value: '100%', label: 'Responsive' },
+    ],
+    tags: ['React 19', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    accentFrom: '#ec4899',
+    accentTo: '#e11d48',
+    icon: '🃏',
+    projectNumber: '01',
+    images: ['/assets/cards-and-chaos/banner.png'],
+  }
 ]
 
 export const categoryCounts: Record<FilterCategory, number> = {
@@ -141,4 +163,5 @@ export const categoryCounts: Record<FilterCategory, number> = {
   travel: projects.filter((p) => p.category === 'travel').length,
   medical: projects.filter((p) => p.category === 'medical').length,
   'real-estate': projects.filter((p) => p.category === 'real-estate').length,
+  gaming: projects.filter((p) => p.category === 'gaming').length,
 }
