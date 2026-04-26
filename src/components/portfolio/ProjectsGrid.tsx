@@ -44,7 +44,7 @@ function ProjectVisual({ project, tall = false }: { project: Project; tall?: boo
 
   const heightClass = tall
     ? 'min-h-[200px] sm:min-h-[260px] md:min-h-[340px]'
-    : 'min-h-[180px] sm:min-h-[210px]'
+    : 'aspect-[2/1] min-h-[220px] sm:min-h-[280px]'
 
   return (
     <div

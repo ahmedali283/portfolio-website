@@ -79,7 +79,7 @@ export const projects: Project[] = [
     icon: '🩺',
     projectNumber: '03',
     images: [
-      '/assets/doctormorris/dmoriss.png',
+      '/assets/doctormorris/dmoris.png',
     ],
   },
   /*
@@ -154,7 +154,7 @@ export const projects: Project[] = [
     accentTo: '#e11d48',
     icon: '🃏',
     projectNumber: '01',
-    images: ['/assets/cards-and-chaos/banner.png'],
+    images: ['/assets/cnc/cnc.png'],
   }
 ]
 
