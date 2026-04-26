@@ -7,11 +7,11 @@ import Image from 'next/image'
 import type { Project } from '@/data/portfolio'
 
 const CATEGORY_BADGE: Record<string, string> = {
-  travel: 'text-orange-400 bg-orange-400/10 border-orange-400/30',
+  travel: 'text-sky-400 bg-sky-400/10 border-sky-400/30',
   medical: 'text-blue-400 bg-blue-400/10 border-blue-400/30',
-  'real-estate': 'text-teal-400 bg-teal-400/10 border-teal-400/30',
-  gaming: 'text-pink-400 bg-pink-400/10 border-pink-400/30',
-  security: 'text-indigo-400 bg-indigo-400/10 border-indigo-400/30',
+  'real-estate': 'text-cyan-400 bg-cyan-400/10 border-cyan-400/30',
+  gaming: 'text-indigo-400 bg-indigo-400/10 border-indigo-400/30',
+  security: 'text-violet-400 bg-violet-400/10 border-violet-400/30',
 }
 
 const CATEGORY_LABEL: Record<string, string> = {
