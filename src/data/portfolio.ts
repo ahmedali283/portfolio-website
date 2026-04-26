@@ -155,6 +155,42 @@ export const projects: Project[] = [
     icon: '🃏',
     projectNumber: '01',
     images: ['/assets/cnc/cnc.png'],
+  },
+  {
+    id: 'ddi-gnn',
+    category: 'medical',
+    title: 'DDI-GNN',
+    tagline: 'Drug Interaction Prediction',
+    description: 'A production-ready deep learning framework for predicting drug-drug interactions using state-of-the-art Graph Neural Networks. Encodes molecular structures as graphs and leverages message-passing neural networks to predict potential adverse interactions.',
+    metrics: [
+      { value: '87.8%', label: 'Accuracy' },
+      { value: '86', label: 'Interaction Types' },
+      { value: 'SOTA', label: 'Graph Neural Nets' },
+    ],
+    tags: ['PyTorch', 'GNN', 'FastAPI', 'Streamlit', 'Docker'],
+    accentFrom: '#8b5cf6',
+    accentTo: '#6366f1',
+    icon: '🧬',
+    projectNumber: '04',
+    images: ['/assets/ddi/ddi2.png'],
+  },
+  {
+    id: 'voxel-sculpt',
+    category: 'gaming',
+    title: 'Voxel Sculpt',
+    tagline: 'Gesture-Controlled 3D Modeling',
+    description: 'A contactless 3D voxel modeling interface that leverages computer vision and machine learning for real-time hand tracking. Integrates MediaPipe Hands with WebGL-based rendering to let users construct and manipulate structures through natural hand gestures.',
+    metrics: [
+      { value: '<100ms', label: 'Latency' },
+      { value: '60 FPS', label: 'Performance' },
+      { value: '21', label: 'Hand Landmarks' },
+    ],
+    tags: ['React', 'Three.js', 'MediaPipe', 'Machine Learning'],
+    accentFrom: '#06b6d4',
+    accentTo: '#3b82f6',
+    icon: '✋',
+    projectNumber: '05',
+    images: ['/assets/voxel/placeholder.png'],
   }
 ]
 
