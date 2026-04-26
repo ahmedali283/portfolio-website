@@ -3,20 +3,21 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { Rocket, Clock, TrendingUp } from 'lucide-react'
 
 const features = [
   {
-    icon: '🚀',
+    icon: <Rocket size={60} className="text-accent" />,
     title: 'Automatic Revenue Generation',
     description: `Your website works while you sleep. Customers browse 900,000+ hotels, see live pricing, and book instantly—no forms, no waiting, no lost inquiries. Meanwhile, agencies still using "contact us" forms are losing 70% of those visitors.`
   },
   {
-    icon: '⏰',
+    icon: <Clock size={60} className="text-accent" />,
     title: 'Reclaim 20+ Hours Every Week',
     description: `Stop manually pulling rates. The system queries TBO and Yalago APIs in real-time, processes bookings automatically, sends confirmations, and syncs to your dashboard. Your team focuses on high-value work: complex itineraries, upselling, relationships.`
   },
   {
-    icon: '📈',
+    icon: <TrendingUp size={60} className="text-accent" />,
     title: 'Premium Positioning',
     description: `When customers see instant availability and professional booking flows, they perceive you as a premium operator on par with Expedia—but you keep 100% of the margin because it's your platform.`
   }

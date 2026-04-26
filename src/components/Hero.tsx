@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import oldSiteImg from '@/assets/old site.png'
 import newSiteImg from '@/assets/new site.png'
+import { Plane, Globe, Map, Briefcase, MapPin } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -21,12 +22,12 @@ export default function Hero() {
       </div>
 
       {/* Animated travel elements */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-20 left-10 text-6xl opacity-5">✈️</div>
-        <div className="absolute top-40 right-20 text-5xl opacity-5">🌍</div>
-        <div className="absolute bottom-32 left-1/4 text-4xl opacity-5">🗺️</div>
-        <div className="absolute top-1/2 right-1/3 text-5xl opacity-5">🧳</div>
-        <div className="absolute bottom-20 right-10 text-6xl opacity-5">📍</div>
+      <div className="absolute inset-0 z-0 overflow-hidden text-secondary">
+        <div className="absolute top-20 left-10 opacity-5"><Plane size={60} /></div>
+        <div className="absolute top-40 right-20 opacity-5"><Globe size={48} /></div>
+        <div className="absolute bottom-32 left-1/4 opacity-5"><Map size={36} /></div>
+        <div className="absolute top-1/2 right-1/3 opacity-5"><Briefcase size={48} /></div>
+        <div className="absolute bottom-20 right-10 opacity-5"><MapPin size={60} /></div>
       </div>
 
       {/* Content */}

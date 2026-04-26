@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { AlertTriangle, CheckCircle, Hotel, Plane } from 'lucide-react'
 
 const hotelProviders = [
   { name: 'TBO Holidays', implementations: 4 },
@@ -54,7 +55,7 @@ export default function APIExpertise() {
           className="grid md:grid-cols-2 gap-8 mb-20 max-w-5xl mx-auto"
         >
           <div className="bg-divider/30 border-2 border-red-500/30 p-8 rounded-xl">
-            <div className="text-red-400 text-4xl mb-4">⚠️</div>
+            <div className="text-red-400 mb-4"><AlertTriangle size={40} /></div>
             <h3 className="text-2xl md:text-3xl font-bold mb-4 text-red-400">Single Provider Problem</h3>
             <p className="text-lg text-gray-300 leading-relaxed">
               Agencies locked into one API miss better rates. Customer searches Dubai hotel, your rate is{' '}
@@ -65,7 +66,7 @@ export default function APIExpertise() {
           </div>
 
           <div className="bg-gradient-to-br from-accent/10 to-accent-teal/10 border-2 border-accent/50 p-8 rounded-xl">
-            <div className="text-success text-4xl mb-4">✓</div>
+            <div className="text-success mb-4"><CheckCircle size={40} /></div>
             <h3 className="text-2xl md:text-3xl font-bold mb-4 text-accent">Multi-Provider Solution</h3>
             <p className="text-lg text-gray-300 leading-relaxed">
               Your system queries TBO, Yalago, Hotelbeds simultaneously. Shows the{' '}
@@ -90,7 +91,7 @@ export default function APIExpertise() {
             {/* Hotels/Accommodation */}
             <div>
               <div className="flex items-center justify-center gap-3 mb-8">
-                <span className="text-4xl">🏨</span>
+                <Hotel size={40} className="text-accent" />
                 <h4 className="text-2xl font-bold">Hotels/Accommodation</h4>
               </div>
               <div className="space-y-4">
@@ -117,7 +118,7 @@ export default function APIExpertise() {
             {/* Flights */}
             <div>
               <div className="flex items-center justify-center gap-3 mb-8">
-                <span className="text-4xl">✈️</span>
+                <Plane size={40} className="text-accent-teal" />
                 <h4 className="text-2xl font-bold">Flights</h4>
               </div>
               <div className="space-y-4">

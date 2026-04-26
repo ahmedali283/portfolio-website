@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { AlertTriangle } from 'lucide-react'
 
 export default function FinalCTA() {
   const ref = useRef(null)
@@ -88,7 +89,7 @@ export default function FinalCTA() {
             className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-accent/50 p-6 rounded-lg inline-block"
           >
             <div className="flex items-center gap-3 text-lg md:text-xl">
-              <span className="text-accent text-2xl">⚠️</span>
+              <span className="text-accent"><AlertTriangle size={24} /></span>
               <div>
                 <span className="font-bold text-accent">7 audit slots remaining</span>
                 <span className="text-secondary"> this month</span>

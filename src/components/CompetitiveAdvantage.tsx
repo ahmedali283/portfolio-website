@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { AlertTriangle } from 'lucide-react'
 
 const comparisons = [
   { yours: 'Instant pricing', competitors: '"Email quote in 4-6 hours"' },
@@ -121,7 +122,7 @@ export default function CompetitiveAdvantage() {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border-2 border-accent p-8 md:p-12 rounded-2xl text-center max-w-4xl mx-auto"
         >
-          <div className="text-accent text-5xl mb-6">⚠️</div>
+          <div className="text-accent mb-6 flex justify-center"><AlertTriangle size={48} /></div>
           <h3 className="text-3xl md:text-4xl font-bold mb-6">The Window Is Closing</h3>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
             Right now, most independent agencies still use manual processes. That's your competitive window.

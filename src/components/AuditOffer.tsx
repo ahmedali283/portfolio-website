@@ -3,14 +3,15 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { BarChart, TrendingUp, DollarSign, Search, Zap, Wrench } from 'lucide-react'
 
 const auditIncludes = [
-  { icon: '📊', title: 'Traffic & Bounce Analysis', description: 'How many visitors leave without booking' },
-  { icon: '📈', title: 'Conversion Rate Benchmark', description: 'Where you stand vs. industry average' },
-  { icon: '💰', title: 'Revenue Leak Calculation', description: 'Estimated annual bookings lost' },
-  { icon: '🔍', title: 'Competitive Intelligence', description: 'What successful agencies are doing differently' },
-  { icon: '⚡', title: 'Quick Win Recommendations', description: '3 immediate improvements (no cost)' },
-  { icon: '🛠️', title: 'System Blueprint', description: 'Exactly how TBO/Yalago integration works for you' }
+  { icon: <BarChart size={40} className="text-accent" />, title: 'Traffic & Bounce Analysis', description: 'How many visitors leave without booking' },
+  { icon: <TrendingUp size={40} className="text-accent" />, title: 'Conversion Rate Benchmark', description: 'Where you stand vs. industry average' },
+  { icon: <DollarSign size={40} className="text-accent" />, title: 'Revenue Leak Calculation', description: 'Estimated annual bookings lost' },
+  { icon: <Search size={40} className="text-accent" />, title: 'Competitive Intelligence', description: 'What successful agencies are doing differently' },
+  { icon: <Zap size={40} className="text-accent" />, title: 'Quick Win Recommendations', description: '3 immediate improvements (no cost)' },
+  { icon: <Wrench size={40} className="text-accent" />, title: 'System Blueprint', description: 'Exactly how TBO/Yalago integration works for you' }
 ]
 
 const nextSteps = [
