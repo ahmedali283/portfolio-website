@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import type { Project } from '@/data/portfolio'
 
@@ -142,6 +143,138 @@ function ProjectVisual({ project, tall = false }: { project: Project; tall?: boo
   )
 }
 
+/* ─── Project detail modal ───────────────────────────────── */
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  const hasImages = Array.isArray(project.images) && project.images.length > 0
+  const isMulti = hasImages && project.images!.length > 1
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', handler)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', handler)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" />
+
+      {/* Modal */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 16 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-background border border-divider/60 rounded-2xl shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-divider/60 text-secondary hover:text-primary hover:bg-divider transition-colors text-sm"
+        >
+          ✕
+        </button>
+
+        {/* Screenshot area */}
+        {hasImages && (
+          <div className="relative h-56 sm:h-72 overflow-hidden rounded-t-2xl flex-shrink-0"
+               style={{ background: `linear-gradient(135deg, ${project.accentFrom}18 0%, ${project.accentTo}28 100%)` }}>
+            <AnimatePresence mode="sync">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={project.images![activeIndex]}
+                  alt={`${project.title} screenshot ${activeIndex + 1}`}
+                  fill
+                  className="object-cover object-top"
+                  sizes="672px"
+                />
+              </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+            {isMulti && (
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                {project.images!.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveIndex(i)}
+                    aria-label={`View screenshot ${i + 1}`}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === activeIndex ? 'w-4 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/70'
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Content */}
+        <div className="p-6 sm:p-8">
+          <span className={`inline-flex items-center text-xs font-bold px-3 py-1 rounded-full border mb-4 ${CATEGORY_BADGE[project.category]}`}>
+            {CATEGORY_LABEL[project.category]}
+          </span>
+
+          <h3 className="text-2xl sm:text-3xl font-bold mb-1">{project.title}</h3>
+          <p className="text-sm font-semibold mb-5" style={{ color: project.accentFrom }}>
+            {project.tagline}
+          </p>
+          <p className="text-secondary leading-relaxed mb-6">{project.description}</p>
+
+          {/* Metrics */}
+          <div className="grid grid-cols-3 gap-3 mb-6">
+            {project.metrics.map(m => (
+              <div key={m.label} className="bg-divider/30 border border-divider/60 rounded-xl p-3 text-center">
+                <p className="text-xl font-black mb-1" style={{ color: project.accentFrom }}>{m.value}</p>
+                <p className="text-secondary text-xs leading-tight">{m.label}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* All tags */}
+          <div className="flex flex-wrap gap-1.5 mb-7">
+            {project.tags.map(tag => (
+              <span key={tag} className="text-xs text-secondary bg-divider/40 border border-divider/60 px-3 py-1 rounded-lg">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href="/book"
+            className="inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 group/cta"
+            style={{ color: project.accentFrom }}
+          >
+            Start a Similar Project
+            <span className="transition-transform duration-200 group-hover/cta:translate-x-1">→</span>
+          </a>
+        </div>
+      </motion.div>
+    </motion.div>,
+    document.body
+  )
+}
+
 /* ─── Featured card (full-width horizontal) ──────────────── */
 function FeaturedCard({ project, delay }: { project: Project; delay: number }) {
   return (
@@ -230,7 +363,10 @@ function FeaturedCard({ project, delay }: { project: Project; delay: number }) {
 
 /* ─── Regular project card ───────────────────────────────── */
 function ProjectCard({ project, index, baseDelay }: { project: Project; index: number; baseDelay: number }) {
+  const [showModal, setShowModal] = useState(false)
+
   return (
+    <>
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
@@ -264,9 +400,16 @@ function ProjectCard({ project, index, baseDelay }: { project: Project; index: n
           <p className="text-sm font-semibold mb-4" style={{ color: project.accentFrom }}>
             {project.tagline}
           </p>
-          <p className="text-secondary text-sm leading-relaxed mb-5 line-clamp-3">
+          <p className="text-secondary text-sm leading-relaxed mb-2 line-clamp-3">
             {project.description}
           </p>
+          <button
+            onClick={() => setShowModal(true)}
+            className="text-xs font-medium mb-5 transition-colors duration-200"
+            style={{ color: project.accentFrom }}
+          >
+            Read more →
+          </button>
 
           {/* Metrics */}
           <div className="grid grid-cols-3 gap-2 mb-5">
@@ -314,6 +457,11 @@ function ProjectCard({ project, index, baseDelay }: { project: Project; index: n
         </div>
       </div>
     </motion.div>
+
+    <AnimatePresence>
+      {showModal && <ProjectModal project={project} onClose={() => setShowModal(false)} />}
+    </AnimatePresence>
+    </>
   )
 }
 
