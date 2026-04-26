@@ -11,6 +11,7 @@ const CATEGORY_BADGE: Record<string, string> = {
   medical: 'text-blue-400 bg-blue-400/10 border-blue-400/30',
   'real-estate': 'text-teal-400 bg-teal-400/10 border-teal-400/30',
   gaming: 'text-pink-400 bg-pink-400/10 border-pink-400/30',
+  security: 'text-indigo-400 bg-indigo-400/10 border-indigo-400/30',
 }
 
 const CATEGORY_LABEL: Record<string, string> = {
@@ -18,6 +19,7 @@ const CATEGORY_LABEL: Record<string, string> = {
   medical: 'Medical',
   'real-estate': 'Real Estate',
   gaming: 'Gaming',
+  security: 'Security & Auth',
 }
 
 function gridColsClass(count: number) {

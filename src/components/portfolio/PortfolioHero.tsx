@@ -8,8 +8,9 @@ const CATEGORIES: { id: FilterCategory; label: string; mobileLabel: string }[] =
   { id: 'all', label: 'All Projects', mobileLabel: 'All' },
   { id: 'travel', label: 'Travel', mobileLabel: 'Travel' },
   { id: 'medical', label: 'Medical', mobileLabel: 'Medical' },
-  { id: 'real-estate', label: 'Real Estate', mobileLabel: 'Estate' },
+  // { id: 'real-estate', label: 'Real Estate', mobileLabel: 'Estate' },
   { id: 'gaming', label: 'Gaming', mobileLabel: 'Gaming' },
+  { id: 'security', label: 'Security & Auth', mobileLabel: 'Security' },
 ]
 
 interface Props {
@@ -105,9 +106,8 @@ export default function PortfolioHero({ active, onChange, filteredCount }: Props
                   <button
                     key={cat.id}
                     onClick={() => onChange(cat.id)}
-                    className={`relative px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-200 ${
-                      active === cat.id ? 'text-background' : 'text-secondary hover:text-primary'
-                    }`}
+                    className={`relative px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors duration-200 ${active === cat.id ? 'text-background' : 'text-secondary hover:text-primary'
+                      }`}
                   >
                     {active === cat.id && (
                       <motion.div
@@ -122,11 +122,10 @@ export default function PortfolioHero({ active, onChange, filteredCount }: Props
                       <span className="hidden sm:inline">{cat.label}</span>
                       {/* Count badge hidden on mobile */}
                       <span
-                        className={`hidden sm:inline text-xs px-1.5 py-0.5 rounded-full font-bold transition-colors duration-200 ${
-                          active === cat.id
+                        className={`hidden sm:inline text-xs px-1.5 py-0.5 rounded-full font-bold transition-colors duration-200 ${active === cat.id
                             ? 'bg-background/20 text-background'
                             : 'bg-divider text-secondary'
-                        }`}
+                          }`}
                       >
                         {categoryCounts[cat.id]}
                       </span>
