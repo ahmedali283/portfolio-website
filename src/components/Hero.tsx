@@ -63,8 +63,8 @@ export default function Hero() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="flex flex-col gap-3 justify-center items-center pt-4"
           >
-            <a href="/book" className="btn-primary">
-              Book Free Audit Call
+            <a href="/book" className="btn-shining-gold">
+              Book Free Audit Call →
             </a>
             <p className="text-sm text-secondary">
               NO B.S. • No hidden fees • No credit card required
